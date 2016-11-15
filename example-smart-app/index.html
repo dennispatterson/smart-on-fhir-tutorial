@@ -37,37 +37,13 @@
           <td id='age'></td>
         </tr>
       </table>
-      <h2>Observation Resource</h2>
-      <table>
-        <tr>
-          <th>Height:</th>
-          <td id='height'></td>
-        </tr>
-        <tr>
-          <th>Systolic Blood Pressure:</th>
-          <td id='systolicbp'></td>
-
-        </tr>
-        <tr>
-          <th>Diastolic Blood Pressure:</th>
-          <td id='diastolicbp'></td>
-        </tr>
-        <tr>
-          <th>LDL:</th>
-          <td id='ldl'></td>
-        </tr>
-        <tr>
-          <th>HDL:</th>
-          <td id='hdl'></td>
-        </tr>
-      </table>
     </div>
-    <script src='./src/js/example-smart-app.js'></script>
+    <script src='./src/js/example-smart-app-patient.js'></script>
     <script src='./lib/fhir-client.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
       extractData().then(
-        //Display Patient Demographics and Observations if extractData was success
+        //Display Patient Demographics if extractData was success
         function(p) {
           drawVisualization(p);
         },

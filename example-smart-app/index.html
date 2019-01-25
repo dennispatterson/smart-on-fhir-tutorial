@@ -33,7 +33,7 @@
         }
       };
 
-      function sendMessage(msgType) {
+      function sendDemoMessage(msgType) {
         SMART.messaging.send(msgType, {
                                         'description': msgType + ' medication',
                                         'resource': {
@@ -43,6 +43,42 @@
                                         }
                                       });
       }
+
+        function sendMessage(msgType) {
+          SMART.messaging.send(msgType, {
+            'description': msgType + ' medication',
+            'resource': {
+              'resourceType': 'MedicationOrder',
+              'status': 'draft',
+              'dosageInstruction': [
+                {
+                  'doseQuantity': {
+                    'value': 1,
+                    'system': 'http://unitsofmeasure.org',
+                    'code': '{pill}'
+                  },
+                  'timing': {
+                    'repeat': {
+                      'frequency': 1,
+                      'period': 1,
+                      'periodUnits': 'd'
+                    }
+                  }
+                }
+              ],
+              'medicationCodeableConcept': {
+                'text': 'Donepezil hydrochloride 10 MG Oral Tablet',
+                'coding': [
+                  {
+                    'display': 'Donepezil hydrochloride 10 MG Oral Tablet',
+                    'system': 'http://www.nlm.nih.gov/research/umls/rxnorm',
+                    'code': '997223'
+                  }
+                ]
+              },
+            }
+          });
+        }
 
       function sendUIMessage(msgType, activityType) {
         SMART.messaging.send(msgType, {
@@ -161,13 +197,18 @@
     </script>
     
     <!-- Add postMessage example -->
-    <h2>Send message to EHR</h2>
+    <h2>Send demo message to EHR</h2>
     <form>
-      <button type="button" onclick="javascript:sendMessage('scratchpad.create')">Send scratchpad.create</button>
-      <button type="button" onclick="javascript:sendMessage('scratchpad.update')">Send scratchpad.update</button>
-      <button type="button" onclick="javascript:sendMessage('scratchpad.delete')">Send scratchpad.delete</button>
+      <button type="button" onclick="javascript:sendDemoMessage('scratchpad.create')">Send scratchpad.create</button>
+      <button type="button" onclick="javascript:sendDemoMessage('scratchpad.update')">Send scratchpad.update</button>
+      <button type="button" onclick="javascript:sendDemoMessage('scratchpad.delete')">Send scratchpad.delete</button>
       <button type="button" onclick="javascript:sendUIMessage('ui.launchActivity', 'scratchpad')">Send ui.launchActivity</button>
       <button type="button" onclick="javascript:sendUIMessage('ui.done', 'problem-list')">Send ui.done</button>
+    </form>
+
+    <h2>Suggest medication changes EHR</h2>
+    <form>
+      <button type="button" onclick="javascript:sendMessage('scratchpad.update')">Switch to Donepezil hydrochloride</button>
     </form>
 
     <div id=message></div>

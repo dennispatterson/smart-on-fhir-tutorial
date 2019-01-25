@@ -90,6 +90,18 @@
         });
       }
 
+      function sendUIDone(activityType) {
+        SMART.messaging.send('ui.done', {
+          "activityType": activityType,
+          "activityParameters": {
+            // Each activity defines its optional+required params
+            "patient": "123",
+          }
+        });
+
+        window.close;
+      }
+
       var ehr_url = ['https://cds-hooks-decisions.herokuapp.com'];
       function receiveMessage(event) {
         if (!ehr_url.includes(event.origin)) {
@@ -208,7 +220,7 @@
       <button type="button" onclick="javascript:sendDemoMessage('scratchpad.update')">Send scratchpad.update</button>
       <button type="button" onclick="javascript:sendDemoMessage('scratchpad.delete')">Send scratchpad.delete</button>
       <button type="button" onclick="javascript:sendUIMessage('ui.launchActivity', 'scratchpad')">Send ui.launchActivity</button>
-      <button type="button" onclick="javascript:sendUIMessage('ui.done', 'problem-list')">Send ui.done</button>
+      <button type="button" onclick="javascript:sendUIMessage('problem-list')">Send ui.done</button>
     </form>
 
     <div id=message></div>

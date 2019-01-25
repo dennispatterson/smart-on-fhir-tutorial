@@ -15,8 +15,8 @@
       var SMART = {
         "messaging": {
           "send": function(msgType, payload) {
-            // var smart_messaging_origin = 'https://cds-hooks-decisions.herokuapp.com';
-            var smart_messaging_origin = 'http://localhost:8080';
+            var smart_messaging_origin = 'https://cds-hooks-decisions.herokuapp.com';
+            // var smart_messaging_origin = 'http://localhost:8080';
 
             var msgStructure = {
               "authentication": { },
@@ -197,6 +197,11 @@
     </script>
     
     <!-- Add postMessage example -->
+    <h2>Suggest medication changes to EHR</h2>
+    <form>
+      <button type="button" onclick="javascript:sendMessage('scratchpad.update')">Switch to Donepezil hydrochloride</button>
+    </form>
+
     <h2>Send demo message to EHR</h2>
     <form>
       <button type="button" onclick="javascript:sendDemoMessage('scratchpad.create')">Send scratchpad.create</button>
@@ -204,11 +209,6 @@
       <button type="button" onclick="javascript:sendDemoMessage('scratchpad.delete')">Send scratchpad.delete</button>
       <button type="button" onclick="javascript:sendUIMessage('ui.launchActivity', 'scratchpad')">Send ui.launchActivity</button>
       <button type="button" onclick="javascript:sendUIMessage('ui.done', 'problem-list')">Send ui.done</button>
-    </form>
-
-    <h2>Suggest medication changes EHR</h2>
-    <form>
-      <button type="button" onclick="javascript:sendMessage('scratchpad.update')">Switch to Donepezil hydrochloride</button>
     </form>
 
     <div id=message></div>

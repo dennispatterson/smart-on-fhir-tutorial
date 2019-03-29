@@ -8,6 +8,11 @@
     }
 
     function onReady(smart)  {
+
+      if (smart.hasOwnProperty('smartMessagingOrigin')) {
+          window.sessionStorage.smartMessagingOrigin = smart.smartMessagingOrigin;
+      }
+
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();

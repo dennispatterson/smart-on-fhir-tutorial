@@ -104,9 +104,9 @@
         win.close();
       }
 
-      var ehr_url = ['https://cds-hooks-decisions.herokuapp.com'];
       function receiveMessage(event) {
-        if (!ehr_url.includes(event.origin)) {
+        var ehrUrl = window.sessionStorage.smartMessagingOrigin;
+        if (event.origin !== ehrUrl) {
           console.log('Receiving message from: ' + event.origin + ' which is not in the approved sender list.' )
           return;
         }

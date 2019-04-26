@@ -17226,8 +17226,10 @@ BBClient.ready = function(input, callback, errback){
     var fhirClientParams = {
       serviceUrl: state.provider.url,
       patientId: tokenResponse.patient,
-      smartMessagingOrigin: tokenResponse.smartMessagingOrigin
+      smartMessagingOrigin: tokenResponse.cerner_smart_messaging_origin
     };
+
+    if(tokenResponse.id)
     
     if (tokenResponse.id_token) {
         var id_token = tokenResponse.id_token;
@@ -17389,7 +17391,7 @@ BBClient.authorize = function(params, errback){
 
   if (urlParam("smart_messaging_origin")){
     params.fake_token_response = params.fake_token_response || {};
-    params.fake_token_response.smartMessagingOrigin = urlParam("smart_messaging_origin");
+    params.fake_token_response.cerner_smart_messaging_origin = urlParam("smart_messaging_origin");
   }
 
   providers(params.server, params.provider, function(provider){

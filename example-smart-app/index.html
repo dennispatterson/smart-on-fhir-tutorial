@@ -6,12 +6,15 @@
     <title>Dennis' Example-SMART-App</title>
 
     <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'>
+    <link rel='stylesheet' type='text/css' href='./lib/css/f-twelve.css'>
+    
     <!--
       Temporarily disable cerner-smart-embeddable-lib
       <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
     -->
     <script src="https://cdn.jsdelivr.net/npm/node-uuid@1.4.8/uuid.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src='./lib/js/f-twelve.umd.js'></script>
     <script>
       var SMART = {
         "messaging": {
@@ -124,7 +127,7 @@
       window.addEventListener("message", receiveMessage, false);
     </script>
   </head>
-  <body>
+  <body onload="FTwelve.show();">
     <div id='errors'>
     </div>
     <div id="loading" class="spinner">
@@ -217,6 +220,7 @@
     </form>
 
     <h2>Send demo message to EHR</h2>
+    
     <form>
       <button type="button" onclick="javascript:sendDemoMessage('scratchpad.create')">Send scratchpad.create</button>
       <button type="button" onclick="javascript:sendDemoMessage('scratchpad.update')">Send scratchpad.update</button>

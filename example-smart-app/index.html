@@ -31,6 +31,10 @@
             };
 
             targetWindow = window.parent != window.top ? window.parent : window.opener;
+            if (!targetWindow) {
+              targetWindow = window.parent;
+            }
+            
             targetWindow.postMessage(msgStructure, smart_messaging_origin);
 
             return;

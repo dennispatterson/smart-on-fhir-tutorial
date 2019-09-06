@@ -17226,7 +17226,7 @@ BBClient.ready = function(input, callback, errback){
     var fhirClientParams = {
       serviceUrl: state.provider.url,
       patientId: tokenResponse.patient,
-      smartMessagingOrigin: tokenResponse.cerner_smart_messaging_origin
+      smartMessagingOrigin: tokenResponse.smart_messaging_origin || tokenResponse.cerner_smart_messaging_origin
     };
 
     if(tokenResponse.id)
